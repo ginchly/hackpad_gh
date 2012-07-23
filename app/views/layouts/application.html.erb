@@ -1,14 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>BookmarkingApp</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+	<meta charset="utf-8">
+	  <title>Bookmarking App</title>
+	  <%= stylesheet_link_tag    "application", media: "all" %>
+	  <%= javascript_include_tag "application" %>
+	  <%= csrf_meta_tags %>
+	  <%= render 'layouts/shim' %>
 </head>
+
 <body>
 
-<%= yield %>
+<%= render 'layouts/header' %>
 
+    <div class="container-fluid">
+      <%= yield %>
+
+
+    <%= render 'layouts/footer' %>
+    </div><!--/.fluid-container-->
+
+<!-- javascript files, remember to include jQuery -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 </body>
+
 </html>
