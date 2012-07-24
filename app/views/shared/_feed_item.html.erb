@@ -1,0 +1,12 @@
+<li id="<%= feed_item.id %>">
+    <span class="user">
+        <%= link_to feed_item.user.name, feed_item.user %>
+    </span>
+    <span class="full_url"><%= feed_item.full_url %></span>
+    <span class="timestamp">
+        Added <%= time_ago_in_words(feed_item.created_at) %> ago.
+    </span>
+    <% if current_user?(feed_item.user) %>
+        <%= link_to "delete", feed_item, method: :delete %>
+    <% end %>
+</li>

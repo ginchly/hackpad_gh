@@ -1,0 +1,9 @@
+<li>
+    <span class="full_url"><%= bookmark.full_url %></span>
+    <span class="timestamp">
+        Added <%= time_ago_in_words(bookmark.created_at) %> ago
+    </span>
+    <% if current_user?(bookmark.user) %>
+        <%= link_to "delete", bookmark, method: :delete %>
+    <% end %>
+</li>

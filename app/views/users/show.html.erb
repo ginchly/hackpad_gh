@@ -1,3 +1,20 @@
-<%= @user.name %>, <%= @user.email %>
+<div class="row">
 
-<h2>Bookmarks </h2>
+    <div class="span4">
+    <%= @user.name %>, <%= @user.email %>
+    </div>
+
+    <div class="span8">
+        <% if @user.bookmarks.any? %>
+        <h3>Bookmarks</h3>
+        <ol class="bookmarks">
+            <%= render @bookmarks %>
+        </ol>
+        <%= will_paginate @bookmarks %>
+        <% else %>
+        <p>No bookmarks added yet </p>
+        <% end %>
+    </div>
+
+
+</div>

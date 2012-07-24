@@ -99,6 +99,24 @@ input, textarea, select, .uneditable-input {
     @extend .error;
 }
 
+/* bookmarks */
+.bookmarks {
+    list-style: none;
+    margin: 10px 0 0 0;
+
+    li {
+        padding: 10px 0;
+        border-top: 1px solid #e8e8e8;
+    }
+}
+.full_url {
+    display: block;
+}
+.timestamp {
+    color: #c0c0c0;
+}
+
+
 /* debug */
 .debug_dump {
     clear: both;
