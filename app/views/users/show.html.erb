@@ -5,15 +5,8 @@
     </div>
 
     <div class="span8">
-        <% if @user.bookmarks.any? %>
-        <h3>Bookmarks</h3>
-        <ol class="bookmarks">
-            <%= render @bookmarks %>
-        </ol>
-        <%= will_paginate @bookmarks %>
-        <% else %>
-        <p>No bookmarks added yet </p>
-        <% end %>
+        <h1>Profile</h1>
+        
     </div>
 
 

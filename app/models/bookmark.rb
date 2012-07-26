@@ -1,10 +1,10 @@
 class Bookmark < ActiveRecord::Base
-  attr_accessible :full_url, :page_metadata, :page_title, :shortening, :site, :tags
+  attr_accessible :full_url, :page_metadata, :page_title, :shortening, :sites_id, :tags
   belongs_to :user
+  belongs_to :sites
   validates :user_id, presence: true
 
-  before_save :parse_url, :get_metadata, :shorten_url
-  before_validation :add_url_protocol
+  before_save :add_url_protocol, :parse_url, :get_metadata, :shorten_url
 
   default_scope order: 'bookmarks.created_at DESC'
   VALID_URL_REGEX = /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix
@@ -21,7 +21,8 @@ class Bookmark < ActiveRecord::Base
     #use built in ruby functionality to get site host so can collect by site
     def parse_url
         uri = URI.parse(self.full_url)
-        self.site = uri.host
+        site_host = Sites.find_or_create_by_site_host(uri.host)
+        self.sites_id = site_host.id.to_i
     end
 
     #shorten using bitly gem

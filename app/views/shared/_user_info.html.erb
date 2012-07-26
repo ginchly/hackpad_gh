@@ -1,9 +1,7 @@
-<a href="<%= user_path(current_user) %>">
 <h1>
     <%= current_user.name %>
 </h1>    
-</a>
 
 <div>
-    <%= link_to "My Bookmarks", current_user %> (<%= current_user.bookmarks.count %>)
+    <%= link_to "My Bookmarks", sites_path %> (<%= current_user.bookmarks.count %>)
 </div>

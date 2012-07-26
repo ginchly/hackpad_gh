@@ -24,10 +24,20 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true
 
   def feed
-    #ensure id is properly escapred
-    Bookmark.where("user_id = ?", id)
+    #find all bookmarks added by user
+    Bookmark.find(:all, :joins => :sites, :include => :sites, :conditions => ["user_id = ?", id], order: "bookmarks.created_at DESC")
   end
 
+  def sites_feed
+    #get all bookmarks added by user, ordered by site_host so can group on page and allow user to click
+    #to show/hide bookmarks belonging to a particular site
+    Bookmark.find(:all, :joins => :sites, :include => :sites, :conditions => ["user_id = ?", id], :order => "sites.site_host")
+  end
+
+  def site_bookmarks(site_id)
+    #find bookmarks that belong to site and have been added by current user
+    Bookmark.find(:all, :joins => :sites, :include => :sites, :conditions => ["sites.id = ? and user_id = ?", site_id, id])
+  end
   
   private
     #use remember token to maintaining users signin status

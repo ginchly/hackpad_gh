@@ -1,12 +1,13 @@
 <li id="<%= feed_item.id %>">
-    <span class="page_title"><%= link_to feed_item.page_title, feed_item.full_url %></span>
+    <span class="page_title"><%= link_to feed_item.page_title, feed_item %></span>
     <div class="urls"><%= link_to feed_item.full_url, feed_item.full_url %>
     (Shortened URL: <%= link_to feed_item.shortening, feed_item.shortening %>)</div>
     <span class="page_metadata"><%= feed_item.page_metadata %></span>
-    <div class="sites">See all sites part of <%= feed_item.site %></div>
-
+    <div class="sites">See all bookmarks part of <%= link_to feed_item.sites.site_host, feed_item.sites %></div>
   
-    <div class="tagline">Tagged with: <span class="tags"><%= feed_item.tags %></span></div>
+    <div class="tagline">Tagged with: 
+        <% if feed_item.tags != "" %> <span class="tags"><%= feed_item.tags %></span>  <% end %>
+    </div>
     <span class="user">
         Added by: <%= link_to feed_item.user.name, feed_item.user %>
     </span>

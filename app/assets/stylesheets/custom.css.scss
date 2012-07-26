@@ -145,6 +145,14 @@ input, textarea, select, .uneditable-input {
 }
 }
 
+.site_host {
+    display: block;
+    font-size:2em;   
+    font-weight: bold;
+    padding-bottom: 8px;
+    padding-top: 8px;
+}
+
 /* debug */
 .debug_dump {
     clear: both;

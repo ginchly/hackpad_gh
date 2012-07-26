@@ -1,0 +1,18 @@
+<!-- SITES show page -->
+<!-- show list of bookmarks belonging to a particular site that have been added by current user -->
+
+<div class="row">
+
+    <div class="span4">
+    <%= render 'layouts/sidebar' %>
+    </div>
+
+    <div class="span8">
+        <h1>Your Bookmarks for <%= @site[0].site_host %> </h1>
+        <ul class="bookmarks">
+        <%= @site_bookmarks %>
+        <%= render partial: 'shared/feed' %>
+        </ul>
+    </div>
+
+</div>
