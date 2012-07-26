@@ -10,8 +10,7 @@
 
         <% if @sites_index.any? %>
             <% @sites_index.each_with_index do |index_item, index| %>
-            <% if @sites_index[index-1] %>
-                <% if index_item.sites.site_host != @sites_index[index-1].sites.site_host %>
+                <% if ((index == 0) or (index_item.sites.site_host != @sites_index[index-1].sites.site_host)) %>
                     <!-- close previous show/hide div -->
                     <% if index != 0 %>
                         </div>
@@ -25,7 +24,6 @@
                     <ul class="bookmarks">
                 <% end %>
                     <%= render partial: 'shared/feed_item', locals: {feed_item: index_item} %>
-            <% end %>
             <% end %>
             <!-- close final ul and div-->
             </ul>
