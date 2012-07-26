@@ -3,7 +3,8 @@ class BookmarksController < ApplicationController
     before_filter :correct_user, only: :destroy
 
     def create
-        @bookmark = current_user.bookmarks.build(params[:bookmark])
+
+        @bookmark = current_user.bookmarks.build(params[:bookmark],site: "test")
         if @bookmark.save
             flash[:success] = "Bookmark created!"
             redirect_to root_path
@@ -15,6 +16,14 @@ class BookmarksController < ApplicationController
     def destroy
         @bookmark.destroy
         redirect_to root_path
+    end
+
+    def show
+        @user = current_user
+        @show_bookmark = Bookmark.find(params[:id])
+        if signed_in?
+            @bookmark = current_user.bookmarks.build
+        end
     end
 
     private

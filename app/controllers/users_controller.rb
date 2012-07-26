@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @bookmarks = @user.bookmarks.paginate(page: params[:page])
+    if signed_in?
+            @bookmark = current_user.bookmarks.build
+    end
   end
   
   def new

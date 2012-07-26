@@ -28,9 +28,11 @@ class User < ActiveRecord::Base
     Bookmark.where("user_id = ?", id)
   end
 
-  #use remember token to maintaining users signin status
+  
   private
+    #use remember token to maintaining users signin status
     def create_remember_token
         self.remember_token = SecureRandom.urlsafe_base64
     end
+
 end

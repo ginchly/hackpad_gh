@@ -99,6 +99,9 @@ input, textarea, select, .uneditable-input {
     @extend .error;
 }
 
+.bookmark_form {
+    padding-top: 15px;
+}
 /* bookmarks */
 .bookmarks {
     list-style: none;
@@ -108,14 +111,39 @@ input, textarea, select, .uneditable-input {
         padding: 10px 0;
         border-top: 1px solid #e8e8e8;
     }
-}
-.full_url {
-    display: block;
-}
-.timestamp {
+    .page_title {
+        a {
+            display: block;
+            font-size:1.4em;   
+            color: #000;
+            font-weight: bold;
+            margin-bottom: 4px;
+            }
+        }
+    .page_metadata {
+        color: #c0c0c0;    
+    }
+    .tagline {
+        color: rgb(62, 109, 142);
+        margin: 2px 2px 2px 0px;
+        text-decoration: none;
+        font-size: 90%;
+        line-height: 1.7;
+        white-space: nowrap;
+        .tags {
+        padding: 3px 4px;
+        background-color: rgb(224, 234, 241);
+        border-bottom: 1px solid rgb(62, 109, 142);
+        border-right: 1px solid rgb(127, 159, 182);
+        }
+    }
+    .urls {
+        font-size: 0.9em;
+    }
+    .timestamp {
     color: #c0c0c0;
 }
-
+}
 
 /* debug */
 .debug_dump {

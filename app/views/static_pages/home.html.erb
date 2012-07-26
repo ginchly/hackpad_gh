@@ -1,12 +1,7 @@
 <% if signed_in? %>
     <div class="row">
         <aside class="span4">
-            <section>
-                <%= render 'shared/user_info' %>
-            </section>
-            <section>
-                <%= render 'shared/bookmark_form' %>
-            </section>
+            <%= render 'layouts/sidebar' %>
         </aside>
         <div class="span8">
             <h3>Bookmarks</h3>

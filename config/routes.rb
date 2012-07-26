@@ -1,7 +1,7 @@
 BookmarkingApp::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  resources :bookmarks, only: [:create, :destroy]
+  resources :bookmarks, only: [:create, :destroy, :show]
 
   match '/signup', to: 'users#new'
   match '/signin', to: 'sessions#new'

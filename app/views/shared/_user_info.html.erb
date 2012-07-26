@@ -5,8 +5,5 @@
 </a>
 
 <div>
-    <%= link_to "My Bookmarks", current_user %>
-</div>
-<div>
-    <%= pluralize(current_user.bookmarks.count, "bookmark") %>
+    <%= link_to "My Bookmarks", current_user %> (<%= current_user.bookmarks.count %>)
 </div>
