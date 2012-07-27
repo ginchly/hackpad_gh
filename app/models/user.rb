@@ -34,8 +34,6 @@ class User < ActiveRecord::Base
     #to show/hide bookmarks belonging to a particular site
     Bookmark.find(:all, :joins => :sites, :include => :sites,\
      :conditions => ["user_id = ?", id], :order => "sites.site_host")
-    Bookmark.find(:all, :joins => :sites, :include => :sites, \
-      :conditions => ["user_id = ?", 2], :order => "sites.site_host")
   end
 
   def site_bookmarks(site_id)
