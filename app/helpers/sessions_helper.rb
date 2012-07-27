@@ -35,5 +35,10 @@ module SessionsHelper
         @current_user ||= User.find_by_remember_token(cookies[:remember_token])
     end
 
+    def create_bookmark
+        if signed_in?
+            @bookmark = current_user.bookmarks.build
+        end
+    end
 
 end

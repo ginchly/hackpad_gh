@@ -3,12 +3,13 @@ class BookmarksController < ApplicationController
     before_filter :correct_user, only: :destroy
 
     def create
-
-        @bookmark = current_user.bookmarks.build(params[:bookmark],site: "test")
+        @bookmark = current_user.bookmarks.build(params[:bookmark])
         if @bookmark.save
             flash[:success] = "Bookmark created!"
             redirect_to root_path
         else
+            #Need @feed_items for static_pages/home to render
+            @feed_items = current_user.feed 
             render 'static_pages/home'
         end
     end
@@ -20,10 +21,16 @@ class BookmarksController < ApplicationController
 
     def show
         @user = current_user
+        create_bookmark
         @show_bookmark = Bookmark.find(params[:id])
-        if signed_in?
-            @bookmark = current_user.bookmarks.build
-        end
+        
+       
+       #Use rescue is trying to navigate to bookmark that doesn't exist
+      rescue
+        #Need @feed_items for static_pages/home to render
+        @feed_items = current_user.feed 
+        flash[:error] = "Bookmark does not exist or has been deleted"
+        render 'static_pages/home'
     end
 
     private

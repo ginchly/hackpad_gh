@@ -1,10 +1,20 @@
 class UsersController < ApplicationController
+  before_filter :signed_in_user, only: [:show]
+
   def show
+    #Will show profile page
+    
+    #create bookmark required for sidebar
+    create_bookmark
     @user = User.find(params[:id])
-    @bookmarks = @user.bookmarks.paginate(page: params[:page])
-    if signed_in?
-            @bookmark = current_user.bookmarks.build
-    end
+
+  #Use rescue is trying to navigate to user that doesn't exist
+  rescue
+    #Need @feed_items for static_pages/home to render
+    @feed_items = current_user.feed 
+    flash[:error] = "User does not exist"
+    render 'static_pages/home'
+ 
   end
   
   def new

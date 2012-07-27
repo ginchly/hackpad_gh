@@ -2,13 +2,13 @@ class Bookmark < ActiveRecord::Base
   attr_accessible :full_url, :page_metadata, :page_title, :shortening, :sites_id, :tags
   belongs_to :user
   belongs_to :sites
-  validates :user_id, presence: true
 
   before_save :add_url_protocol, :parse_url, :get_metadata, :shorten_url
 
-  default_scope order: 'bookmarks.created_at DESC'
   VALID_URL_REGEX = /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix
-  #validates :site, presence: true, format: { with: VALID_URL_REGEX }
+  validates :full_url, presence: true, uniqueness: { case_sensitive: false } #format: { with: VALID_URL_REGEX }
+
+  default_scope order: 'bookmarks.created_at DESC'
 
   private
     #get site from full url, add http:// if doesnt already exist
