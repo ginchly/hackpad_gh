@@ -6,3 +6,10 @@
 </div>
 <%= f.submit "Add Bookmark", class: "btn btn-large btn-primary" %>
 <% end %>
+
+<script>
+    var myTextArea = $('textarea').tagify();
+    $('form').submit( function() {
+         this.tags = $('textarea').tagify('serialize');
+    });
+</script>

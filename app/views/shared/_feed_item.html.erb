@@ -6,7 +6,10 @@
     <div class="sites">See all bookmarks part of <%= link_to feed_item.sites.site_host, feed_item.sites %></div>
   
     <div class="tagline">Tagged with: 
-        <% if feed_item.tags != "" %> <span class="tags"><%= feed_item.tags %></span>  <% end %>
+        <% tags = feed_item.tags.split(",") %>
+        <% tags.each do |tag| %>
+        <span class="tags"><%= tag %></span> 
+        <% end %>
     </div>
     <span class="user">
         Added by: <%= link_to feed_item.user.name, feed_item.user %>
