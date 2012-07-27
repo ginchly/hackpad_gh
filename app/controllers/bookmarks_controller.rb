@@ -1,5 +1,5 @@
 class BookmarksController < ApplicationController
-    before_filter :signed_in_user, only: [:create, :destroy]
+    before_filter :signed_in_user, only: [:create, :destroy, :show]
     before_filter :correct_user, only: :destroy
 
     def create
@@ -20,10 +20,9 @@ class BookmarksController < ApplicationController
     end
 
     def show
-        @user = current_user
-        create_bookmark
-        @show_bookmark = Bookmark.find(params[:id])
-        
+    @user = current_user
+    create_bookmark
+    @show_bookmark = Bookmark.find(params[:id])
        
        #Use rescue is trying to navigate to bookmark that doesn't exist
       rescue

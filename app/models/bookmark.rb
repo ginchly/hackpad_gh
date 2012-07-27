@@ -3,12 +3,11 @@ class Bookmark < ActiveRecord::Base
   belongs_to :user
   belongs_to :sites
 
-  before_save :add_url_protocol, :parse_url, :get_metadata, :shorten_url
+  before_validation :add_url_protocol, :parse_url, :get_metadata, :shorten_url
 
   VALID_URL_REGEX = /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix
-  validates :full_url, presence: true, uniqueness: { case_sensitive: false } #format: { with: VALID_URL_REGEX }
+  validates :full_url, presence: true, uniqueness: {scope: :user_id, case_sensitive: false, message: 'already exists in bookmarks list' }, format: { with: VALID_URL_REGEX }
 
-  default_scope order: 'bookmarks.created_at DESC'
 
   private
     #get site from full url, add http:// if doesnt already exist

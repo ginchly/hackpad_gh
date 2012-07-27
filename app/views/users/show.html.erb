@@ -6,9 +6,21 @@
     </div>
 
     <div class="span8">
-        <h1>Profile for <%= current_user.name %></h1>
-        <div class='btn btn-primary'>Follow this user's bookmarks</div>
-        <!-- Placeholder for publicly visible profile page -->
+        <h1>Profile for <%= @user.name %></h1>
+        <% if !current_user?(@user) %>
+            <div class='btn btn-primary'>Follow this user's bookmarks</div>
+            <br><br>
+        <% end %>
+        <div class='profile-info'>
+        <% if current_user?(@user) %>
+            <a href="#">Modify Profile</a>
+        <% end %>
+            <br><br>
+        <h3>Name:</h3><%= @user.name %>
+            <br><br>
+        <h3>Email address:</h3><%= @user.email %>
+        </div>
+        
     </div>
 
 

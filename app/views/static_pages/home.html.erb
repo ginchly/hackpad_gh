@@ -4,15 +4,17 @@
             <%= render 'layouts/sidebar' %>
         </aside>
         <div class="span8">
-            <h1>Your Bookmarks</h1>
+            <h1>Recently Created Bookmarks</h1>
             <%= render 'shared/feed' %>
+            <%= link_to "See all bookmarks", sites_path %>
         </div>
     </div>
 <% else %>
     <div class="center hero-unit">
         <h1>Welcome to Bookmarker</h1>
         <h2>Bookmarker is a web application for storing all your bookmarks</h2>
-        <%= link_to "Sign Up", signup_path, class: "btn btn-large btn-primary" %>
+        <%= link_to "Sign Up", signup_path, class: "btn btn-large btn-primary hero-btn-left" %>
+        <%= link_to "Sign In", signin_path, class: "btn btn-large btn-success hero-btn-right" %>
     </div>
 
 <% end %>

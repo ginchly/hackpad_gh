@@ -25,18 +25,23 @@ class User < ActiveRecord::Base
 
   def feed
     #find all bookmarks added by user
-    Bookmark.find(:all, :joins => :sites, :include => :sites, :conditions => ["user_id = ?", id], order: "bookmarks.created_at DESC")
+    Bookmark.find(:all, :limit => 10, :joins => :sites, :include => :sites,\
+     :conditions => ["user_id = ?", id], order: "bookmarks.created_at DESC")
   end
 
   def sites_feed
     #get all bookmarks added by user, ordered by site_host so can group on page and allow user to click
     #to show/hide bookmarks belonging to a particular site
-    Bookmark.find(:all, :joins => :sites, :include => :sites, :conditions => ["user_id = ?", id], :order => "sites.site_host")
+    Bookmark.find(:all, :joins => :sites, :include => :sites,\
+     :conditions => ["user_id = ?", id], :order => "sites.site_host")
+    Bookmark.find(:all, :joins => :sites, :include => :sites, \
+      :conditions => ["user_id = ?", 2], :order => "sites.site_host")
   end
 
   def site_bookmarks(site_id)
     #find bookmarks that belong to site and have been added by current user
-    Bookmark.find(:all, :joins => :sites, :include => :sites, :conditions => ["sites.id = ? and user_id = ?", site_id, id])
+    Bookmark.find(:all, :joins => :sites, :include => :sites, \
+     :conditions => ["sites.id = ? and user_id = ?", site_id, id], order: "bookmarks.created_at DESC")
   end
   
   private

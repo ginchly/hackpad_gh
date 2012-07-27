@@ -9,10 +9,9 @@
 
     <div class="span8">
         <h1>Your Bookmarks for <%= @site[0].site_host %> </h1>
+        <%= link_to "Back to all bookmarks", sites_path %>
         <ul class="bookmarks">
-        <%= @site_bookmarks %>
         <%= render partial: 'shared/feed' %>
-        <%= @feed_items %>
         </ul>
     </div>
 

@@ -7,3 +7,5 @@ en:
     attributes:
         user:
             password_digest: "Password"
+        bookmark:    
+            full_url: "URL"

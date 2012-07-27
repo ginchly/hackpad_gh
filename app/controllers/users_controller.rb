@@ -2,11 +2,10 @@ class UsersController < ApplicationController
   before_filter :signed_in_user, only: [:show]
 
   def show
-    #Will show profile page
-    
+    #Will show public profile page, this should be visible to any signed in user
     #create bookmark required for sidebar
-    create_bookmark
-    @user = User.find(params[:id])
+      create_bookmark
+      @user = User.find(params[:id])
 
   #Use rescue is trying to navigate to user that doesn't exist
   rescue
