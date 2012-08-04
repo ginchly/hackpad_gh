@@ -1,0 +1,17 @@
+
+<div class="row">
+    <aside class="span4">
+        <%= render 'layouts/sidebar' %>
+    </aside>
+    <div class="span6 offset1">
+        <h1 class="center">Update Status</h1>
+        <%= form_for(@user) do |f| %>
+            <%= render 'shared/error_messages', object: f.object %>
+
+            <%= f.label :status %>
+            <%= f.text_field :status %>
+
+            <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+        <% end %>
+    </div>
+</div>

@@ -9,6 +9,8 @@ gem 'bootstrap-will_paginate', '0.0.6'
 #used for getting site metadata
 gem 'pismo'
 gem 'bitly'
+gem 'twilio-ruby'
+gem 'pusher'
 
 group :development, :test do
     gem 'rspec-rails', '2.10.0'

@@ -16,6 +16,10 @@ html {
     overflow-y: scroll;
 }
 
+form {
+  margin-bottom: 8px;
+}
+
 body {
     padding-top: 60px;
 }
@@ -48,7 +52,8 @@ h1 {
 h2 {
     font-size: 1.7em;
     letter-spacing: -1px;
-    margin-bottom: 20px;
+    padding-top: 10px;
+    margin-bottom: 5px;
     font-weight: normal;
     color: #999;
 }
@@ -114,8 +119,8 @@ input, textarea, select, .uneditable-input {
     width: 100%;
     padding: 10px;
     height: auto;
-    margin-bottom: 15px;
-    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-top: 5px;
     @include box_sizing;
 }
 
@@ -137,7 +142,7 @@ input, textarea, select, .uneditable-input {
     padding-top: 15px;
 }
 /* bookmarks */
-.bookmarks {
+.members_sidebar {
     list-style: none;
     margin: 10px 0 0 0;
 
@@ -145,39 +150,23 @@ input, textarea, select, .uneditable-input {
         padding: 10px 0;
         border-top: 1px solid #e8e8e8;
     }
-    .page_title {
-        a {
+    .name {
             display: block;
             font-size:1.4em;   
             color: #000;
             font-weight: bold;
             margin-bottom: 4px;
-            }
         }
-    .page_metadata {
+    .skills {
         color: #c0c0c0;    
     }
-    .tagline {
-        color: rgb(62, 109, 142);
-        margin: 2px;
-        text-decoration: none;
-        font-size: 90%;
-        line-height: 1.7;
-        white-space: nowrap;
-        .tags {
-        margin: 2px;
-        padding: 3px 8px 3px 8px;
-        background-color: rgb(224, 234, 241);
-        border-bottom: 1px solid rgb(62, 109, 142);
-        border-right: 1px solid rgb(127, 159, 182);
-        }
+    .photo {
+        float: left;
+        width: 50px;
+        height: 50px;
+        background: #000;
+        margin-right: 10px;
     }
-    .urls {
-        font-size: 0.9em;
-    }
-    .timestamp {
-    color: #c0c0c0;
-}
 }
 
 .site_host {
@@ -197,45 +186,71 @@ input, textarea, select, .uneditable-input {
     @include box_sizing;
 }
 
-/* Tagify styles
-Author: Alicia Liu
-*/
+#ideaList {
+  height: 800px;
+}
 
-.tagify-container {
-    height: 200px;
-    background-color: #FFF;
-    overflow: auto;
-    margin-bottom: 10px;
-    border: 1px solid #333;
-    width: 100%;
-    padding-left: 5px;
-    padding-right: 5px;
-    height: auto;
-    @include box_sizing;
+.icon-remove {
+  float:right;
 }
-.tagify-container > span {
-    display: inline-block;
-    padding: 3px 4px;
-    color: rgb(62, 109, 142);
-    margin: 2px 6px 6px 0px;
-    text-decoration: none;
-    font-size: 90%;
-    line-height: 1.7;
-    white-space: nowrap;
-    background-color: rgb(224, 234, 241);
-    border-bottom: 1px solid rgb(62, 109, 142);
-    border-right: 1px solid rgb(127, 159, 182);
-    color: #888;
+
+/* canvas */
+.canvas ul,li{
+  list-style:none;
 }
-.tagify-container > span > a {
-    padding-left: 5px;
-    text-decoration: none;
-    font-weight: bold;
+.canvas ul{
+  overflow:hidden;
+  padding:3em;
 }
-.tagify-container > input {
-    border: 0 none;
-    width: 100px;
+.canvas ul li {
+  text-decoration:none;
+  color:#000;
+  background:#ffc;
+  display:block;
+  height:7em;
+  width:13em;
+  padding:1em;
+  -moz-box-shadow:5px 5px 7px rgba(33,33,33,1);
+  -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+  box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+  -moz-transition:-moz-transform .15s linear;
+  -o-transition:-o-transform .15s linear;
+  -webkit-transition:-webkit-transform .15s linear;
 }
-.tagify-container > input:focus {
-    outline: none;
+.canvas ul li{
+  margin:1em;
+  float:left;
 }
+
+.canvas ul li p{
+  font-family:"Reenie Beanie",arial,sans-serif;
+  font-weight:bold;
+  padding-top: 7px;
+  font-size:180%;
+}
+.canvas ul li {
+  -webkit-transform: rotate(-6deg);
+  -o-transform: rotate(-6deg);
+  -moz-transform:rotate(-6deg);
+  background:#F6F792;
+}
+.canvas ul li:nth-child(even) {
+  -o-transform:rotate(4deg);
+  -webkit-transform:rotate(4deg);
+  -moz-transform:rotate(4deg);
+  position:relative;
+  top:5px;
+}
+.canvas ul li:nth-child(3n) {
+  -o-transform:rotate(-3deg);
+  -webkit-transform:rotate(-3deg);
+  -moz-transform:rotate(-3deg);
+  position:relative;
+  top:-5px;
+
+}
+
+
+.canvas ol{text-align:center;}
+.canvas ol li{display:inline;padding-right:1em;}
+.canvas ol li a{color:#fff;}

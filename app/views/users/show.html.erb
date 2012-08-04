@@ -7,18 +7,18 @@
 
     <div class="span8">
         <h1>Profile for <%= @user.name %></h1>
-        <% if !current_user?(@user) %>
-            <div class='btn btn-primary'>Follow this user's bookmarks</div>
-            <br><br>
-        <% end %>
+        <a href="#">Text via Twilio</a> | <a href="#">Call via Twilio</a>
+    
         <div class='profile-info'>
         <% if current_user?(@user) %>
             <a href="#">Modify Profile</a>
         <% end %>
             <br><br>
         <h3>Name:</h3><%= @user.name %>
-            <br><br>
         <h3>Email address:</h3><%= @user.email %>
+        <div class="status"><h3>Current Status: </h3><%= @user.status %></div>
+        <div class="skills"><h3>Skills: </h3><%= @user.skills %></div>
+        
         </div>
         
     </div>

@@ -1,0 +1,17 @@
+<div class="row">
+    <aside class="span4">
+        <%= render 'layouts/sidebar' %>
+    </aside>
+
+                <div class="span4 offset2">
+                    <div class="center"><h1>Send SMS via Twilio</h1></div>
+                    <%= form_for(@message) do |f| %>
+                    
+                        <%= f.label :content %>
+                        <%= f.text_field :content %>
+
+                        <%= f.submit "Send SMS", class: "btn btn-large btn-primary" %>
+                    <% end %>
+                </div>
+
+</div>

@@ -1,7 +1,27 @@
-<section>
-    <%= render 'shared/user_info' %>
-</section>
-<section class="bookmark_form">
-    <h3>Add New Bookmark</h3>
-    <%= render 'shared/bookmark_form' %>
-</section>
+<h2>User Actions</h2>
+<%= form_for(current_user) do |f| %>
+    <%= f.text_field :status %>
+    <%= f.submit "Update Status", class: "btn btn-primary" %>
+<% end %>
+
+<h2>Group Actions</h2>
+    <div><%= link_to "SMS Group via Twilio", new_message_path %></div>
+    <div><%= link_to "Send List of Phone Numbers via SMS", :controller => "messages", :action => "contacts" %></div>
+
+<h2>Project Members</h2>
+<% if users.any? %>
+<div class="members_sidebar">
+    <% users.each do |member| %>
+    <li>
+            <div class="photo"></div>
+            <div class="name"><%= member.name %></div>
+            <div><a href="#">Text via Twilio</a> </div>
+            <div> <a href="#">Call via Twilio</a></div>
+            <div class="status"><strong>Current Status:</strong> <%= member.status %> (<%= time_ago_in_words(member.updated_at) %> ago)</div>
+            <div class="skills"><strong>Skills: </strong><%= member.skills %></div>
+            
+    </li>
+    <% end %>
+</div>
+<% end %>
+

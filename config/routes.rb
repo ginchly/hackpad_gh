@@ -1,13 +1,21 @@
 BookmarkingApp::Application.routes.draw do
+  get "messages/new"
+
   resources :users
+  resources :ideas
+  resources :messages
   resources :sessions, only: [:new, :create, :destroy]
   resources :bookmarks, only: [:create, :destroy, :show]
   resources :sites, only: [:show, :index]
 
+  match '/sms', to: 'messages#new'
+  match '/contacts', to: 'messages#contacts'
+  match '/clear', to: 'ideas#clear_all'
   match '/signup', to: 'users#new'
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
   root to: 'static_pages#home'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
